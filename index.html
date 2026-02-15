@@ -16,6 +16,75 @@
             color: #333;
             line-height: 1.6;
         }
+        
+        /* Login Screen Styles */
+        .login-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-card h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        .login-card p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        .login-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+        .login-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .login-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+        .login-error {
+            color: #e74c3c;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .login-success {
+            color: #27ae60;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            display: none;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -115,160 +184,237 @@
             background: rgba(255,255,255,0.1);
             border-radius: 12px;
         }
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(231, 76, 60, 0.9);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+        .logout-btn:hover {
+            background: rgba(231, 76, 60, 1);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 Dashboard Showcase</h1>
-        <p style="text-align: center; color: white; margin-bottom: 40px; font-size: 1.2em;">
-            Proof of Concept - Four Dashboard Types
-        </p>
-        
-        <div class="grid">
-            <!-- OpenClaw Status Dashboard -->
-            <div class="card">
-                <h2>⚡ OpenClaw Status Dashboard</h2>
-                <div class="status-grid">
-                    <div class="status-item">
-                        <div>Gateway Status</div>
-                        <div class="status-value">🟢 Online</div>
-                    </div>
-                    <div class="status-item">
-                        <div>Active Sessions</div>
-                        <div class="status-value">3</div>
-                    </div>
-                    <div class="status-item">
-                        <div>Uptime</div>
-                        <div class="status-value">2d 14h</div>
-                    </div>
-                    <div class="status-item">
-                        <div>Memory Usage</div>
-                        <div class="status-value">45%</div>
-                    </div>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 45%"></div>
-                </div>
-                <p><strong>Last Updated:</strong> <span id="timestamp">Loading...</span></p>
-            </div>
-
-            <!-- Personal Dashboard -->
-            <div class="card">
-                <h2>👤 Personal Dashboard</h2>
-                <div class="weather-widget">
-                    <h3>🌤️ Mountain Time Weather</h3>
-                    <div style="font-size: 2em; margin: 10px 0;">22°C</div>
-                    <div>Partly Cloudy</div>
-                </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <h4>📅 Today's Schedule</h4>
-                    <ul style="margin: 10px 0; padding-left: 20px;">
-                        <li>9:00 AM - Team Meeting</li>
-                        <li>2:00 PM - Code Review</li>
-                        <li>4:00 PM - Dashboard Demo</li>
-                    </ul>
-                </div>
-                <div class="link-grid">
-                    <a href="#" class="link-button">📧 Email</a>
-                    <a href="#" class="link-button">📋 Calendar</a>
-                </div>
-            </div>
-
-            <!-- System Monitor -->
-            <div class="card">
-                <h2>💻 System Monitor</h2>
-                <div style="margin: 15px 0;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <span>CPU Usage</span>
-                        <span><strong>34%</strong></span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 34%; background: #e74c3c;"></div>
-                    </div>
-                </div>
-                <div style="margin: 15px 0;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <span>RAM Usage</span>
-                        <span><strong>67%</strong></span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 67%; background: #f39c12;"></div>
-                    </div>
-                </div>
-                <div style="margin: 15px 0;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                        <span>Disk Usage</span>
-                        <span><strong>23%</strong></span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 23%; background: #27ae60;"></div>
-                    </div>
-                </div>
-                <div class="status-grid">
-                    <div class="status-item">
-                        <div>Load Average</div>
-                        <div class="status-value">1.2</div>
-                    </div>
-                    <div class="status-item">
-                        <div>Processes</div>
-                        <div class="status-value">143</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Simple Landing Page -->
-            <div class="card">
-                <h2>🏠 Simple Landing Page</h2>
-                <div style="text-align: center; margin: 20px 0;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2em;">
-                        👨‍💻
-                    </div>
-                    <h3 style="margin-bottom: 10px;">Daniel Kinard</h3>
-                    <p style="color: #7f8c8d; margin-bottom: 20px;">Developer & OpenClaw Enthusiast</p>
-                </div>
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                    <p style="font-style: italic; text-align: center;">
-                        "Building the future, one dashboard at a time."
-                    </p>
-                </div>
-                <div class="link-grid">
-                    <a href="#" class="link-button">🐙 GitHub</a>
-                    <a href="#" class="link-button">💼 LinkedIn</a>
-                    <a href="#" class="link-button">📧 Contact</a>
-                    <a href="#" class="link-button">📝 Blog</a>
-                </div>
-            </div>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-card">
+            <h1>🔐 Access Required</h1>
+            <p>Enter password to view dashboard</p>
+            <input type="password" id="passwordInput" class="login-input" placeholder="Enter password..." maxlength="10">
+            <button onclick="checkPassword()" class="login-btn">Access Dashboard</button>
+            <div id="loginMessage"></div>
         </div>
+    </div>
 
-        <div class="footer">
-            <h3>🎯 What's Next?</h3>
-            <p>This is just the beginning! Each of these dashboard types can be:</p>
-            <ul style="text-align: left; max-width: 600px; margin: 15px auto;">
-                <li>✨ Connected to real APIs and data sources</li>
-                <li>🎨 Fully customized with your branding and colors</li>
-                <li>📱 Made responsive for mobile devices</li>
-                <li>🔄 Auto-refreshing with live data</li>
-                <li>🚀 Deployed automatically via GitHub Actions</li>
-            </ul>
-            <p style="margin-top: 20px;">
-                <strong>Built by Dev ⚡ | Powered by OpenClaw | Deployed on GitHub Pages</strong>
+    <!-- Main Content -->
+    <div id="mainContent" class="main-content">
+        <button onclick="logout()" class="logout-btn">🚪 Logout</button>
+        
+        <div class="container">
+            <h1>🚀 Dashboard Showcase</h1>
+            <p style="text-align: center; color: white; margin-bottom: 40px; font-size: 1.2em;">
+                Proof of Concept - Four Dashboard Types
             </p>
+            
+            <div class="grid">
+                <!-- OpenClaw Status Dashboard -->
+                <div class="card">
+                    <h2>⚡ OpenClaw Status Dashboard</h2>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <div>Gateway Status</div>
+                            <div class="status-value">🟢 Online</div>
+                        </div>
+                        <div class="status-item">
+                            <div>Active Sessions</div>
+                            <div class="status-value">3</div>
+                        </div>
+                        <div class="status-item">
+                            <div>Uptime</div>
+                            <div class="status-value">2d 14h</div>
+                        </div>
+                        <div class="status-item">
+                            <div>Memory Usage</div>
+                            <div class="status-value">45%</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                    <p><strong>Last Updated:</strong> <span id="timestamp">Loading...</span></p>
+                </div>
+
+                <!-- Personal Dashboard -->
+                <div class="card">
+                    <h2>👤 Personal Dashboard</h2>
+                    <div class="weather-widget">
+                        <h3>🌤️ Mountain Time Weather</h3>
+                        <div style="font-size: 2em; margin: 10px 0;">22°C</div>
+                        <div>Partly Cloudy</div>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <h4>📅 Today's Schedule</h4>
+                        <ul style="margin: 10px 0; padding-left: 20px;">
+                            <li>9:00 AM - Team Meeting</li>
+                            <li>2:00 PM - Code Review</li>
+                            <li>4:00 PM - Dashboard Demo</li>
+                        </ul>
+                    </div>
+                    <div class="link-grid">
+                        <a href="#" class="link-button">📧 Email</a>
+                        <a href="#" class="link-button">📋 Calendar</a>
+                    </div>
+                </div>
+
+                <!-- System Monitor -->
+                <div class="card">
+                    <h2>💻 System Monitor</h2>
+                    <div style="margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>CPU Usage</span>
+                            <span><strong>34%</strong></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 34%; background: #e74c3c;"></div>
+                        </div>
+                    </div>
+                    <div style="margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>RAM Usage</span>
+                            <span><strong>67%</strong></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 67%; background: #f39c12;"></div>
+                        </div>
+                    </div>
+                    <div style="margin: 15px 0;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Disk Usage</span>
+                            <span><strong>23%</strong></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 23%; background: #27ae60;"></div>
+                        </div>
+                    </div>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <div>Load Average</div>
+                            <div class="status-value">1.2</div>
+                        </div>
+                        <div class="status-item">
+                            <div>Processes</div>
+                            <div class="status-value">143</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simple Landing Page -->
+                <div class="card">
+                    <h2>🏠 Simple Landing Page</h2>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2em;">
+                            👨‍💻
+                        </div>
+                        <h3 style="margin-bottom: 10px;">Daniel Kinard</h3>
+                        <p style="color: #7f8c8d; margin-bottom: 20px;">Developer & OpenClaw Enthusiast</p>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <p style="font-style: italic; text-align: center;">
+                            "Building the future, one dashboard at a time."
+                        </p>
+                    </div>
+                    <div class="link-grid">
+                        <a href="#" class="link-button">🐙 GitHub</a>
+                        <a href="#" class="link-button">💼 LinkedIn</a>
+                        <a href="#" class="link-button">📧 Contact</a>
+                        <a href="#" class="link-button">📝 Blog</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <h3>🎯 What's Next?</h3>
+                <p>This is just the beginning! Each of these dashboard types can be:</p>
+                <ul style="text-align: left; max-width: 600px; margin: 15px auto;">
+                    <li>✨ Connected to real APIs and data sources</li>
+                    <li>🎨 Fully customized with your branding and colors</li>
+                    <li>📱 Made responsive for mobile devices</li>
+                    <li>🔄 Auto-refreshing with live data</li>
+                    <li>🚀 Deployed automatically via GitHub Actions</li>
+                </ul>
+                <p style="margin-top: 20px;">
+                    <strong>Built by Dev ⚡ | Powered by OpenClaw | Deployed on GitHub Pages | Protected Access</strong>
+                </p>
+            </div>
         </div>
     </div>
 
     <script>
-        // Update timestamp
-        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        const correctPassword = '7822';
         
-        // Simple animation for progress bars
-        setTimeout(() => {
-            const progressBars = document.querySelectorAll('.progress-fill');
-            progressBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => bar.style.width = width, 100);
-            });
-        }, 500);
+        // Check if already authenticated this session
+        window.onload = function() {
+            if (sessionStorage.getItem('authenticated') === 'true') {
+                showMainContent();
+            }
+        }
+        
+        // Handle Enter key in password input
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        function checkPassword() {
+            const inputPassword = document.getElementById('passwordInput').value;
+            const messageDiv = document.getElementById('loginMessage');
+            
+            if (inputPassword === correctPassword) {
+                messageDiv.innerHTML = '<div class="login-success">✅ Access Granted</div>';
+                sessionStorage.setItem('authenticated', 'true');
+                setTimeout(showMainContent, 1000);
+            } else {
+                messageDiv.innerHTML = '<div class="login-error">❌ Incorrect Password</div>';
+                document.getElementById('passwordInput').value = '';
+                // Clear error after 3 seconds
+                setTimeout(() => messageDiv.innerHTML = '', 3000);
+            }
+        }
+        
+        function showMainContent() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            
+            // Initialize main content
+            document.getElementById('timestamp').textContent = new Date().toLocaleString();
+            
+            // Animate progress bars
+            setTimeout(() => {
+                const progressBars = document.querySelectorAll('.progress-fill');
+                progressBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0%';
+                    setTimeout(() => bar.style.width = width, 100);
+                });
+            }, 500);
+        }
+        
+        function logout() {
+            sessionStorage.removeItem('authenticated');
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('passwordInput').value = '';
+            document.getElementById('loginMessage').innerHTML = '';
+        }
     </script>
 </body>
 </html>
