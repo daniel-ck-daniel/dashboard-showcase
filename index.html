@@ -3,418 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Showcase - Proof of Concept</title>
+    <title>Access Required</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            line-height: 1.6;
-        }
         
-        /* Login Screen Styles */
-        .login-screen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
         }
-        .login-card {
+        
+        .container {
             background: white;
-            border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-width: 400px;
             width: 100%;
         }
-        .login-card h1 {
-            color: #2c3e50;
+        
+        h1 {
+            color: #333;
             margin-bottom: 10px;
-            font-size: 2em;
-        }
-        .login-card p {
-            color: #7f8c8d;
-            margin-bottom: 30px;
-        }
-        .login-input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #ecf0f1;
-            border-radius: 10px;
-            font-size: 1.1em;
-            margin-bottom: 20px;
-            transition: border-color 0.3s ease;
-        }
-        .login-input:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-        .login-btn {
-            background: linear-gradient(45deg, #3498db, #2980b9);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-size: 1.1em;
-            cursor: pointer;
-            width: 100%;
-            transition: transform 0.3s ease;
-        }
-        .login-btn:hover {
-            transform: translateY(-2px);
-        }
-        .login-error {
-            color: #e74c3c;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        .login-success {
-            color: #27ae60;
-            margin-top: 15px;
-            font-weight: bold;
+            font-size: 24px;
         }
         
-        /* Main Content Styles */
-        .main-content {
-            display: none;
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        
+        .input-group {
+            margin-bottom: 20px;
         }
-        h1 {
-            text-align: center;
-            color: white;
-            margin-bottom: 40px;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-        .card h2 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-        }
-        .status-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 15px 0;
-        }
-        .status-item {
-            background: #ecf0f1;
-            padding: 10px;
-            border-radius: 6px;
-            text-align: center;
-        }
-        .status-value {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #27ae60;
-        }
-        .progress-bar {
+        
+        input[type="password"] {
             width: 100%;
-            height: 20px;
-            background: #ecf0f1;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #3498db, #2ecc71);
-            border-radius: 10px;
-            transition: width 0.3s ease;
-        }
-        .link-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-        .link-button {
-            background: #3498db;
-            color: white;
             padding: 12px;
-            text-decoration: none;
+            border: 2px solid #e0e0e0;
             border-radius: 6px;
-            text-align: center;
-            transition: background 0.3s ease;
+            font-size: 16px;
+            transition: border-color 0.3s;
         }
-        .link-button:hover {
-            background: #2980b9;
+        
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
         }
-        .weather-widget {
-            background: linear-gradient(45deg, #74b9ff, #0984e3);
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 15px 0;
-        }
-        .footer {
-            text-align: center;
-            color: white;
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-        }
-        .logout-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(231, 76, 60, 0.9);
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #667eea;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 0.9em;
-            transition: background 0.3s ease;
+            transition: background 0.3s;
         }
-        .logout-btn:hover {
-            background: rgba(231, 76, 60, 1);
+        
+        button:hover:not(:disabled) {
+            background: #5568d3;
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .error {
+            color: #e74c3c;
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .lockout {
+            color: #e67e22;
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
-    <!-- Login Screen -->
-    <div id="loginScreen" class="login-screen">
-        <div class="login-card">
-            <h1>🔐 Access Required</h1>
-            <p>Enter password to view dashboard</p>
-            <input type="password" id="passwordInput" class="login-input" placeholder="Enter password..." maxlength="10">
-            <button onclick="checkPassword()" class="login-btn">Access Dashboard</button>
-            <div id="loginMessage"></div>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div id="mainContent" class="main-content">
-        <button onclick="logout()" class="logout-btn">🚪 Logout</button>
+    <div class="container">
+        <h1>🔒 Access Required</h1>
+        <p>Please enter the password to continue</p>
         
-        <div class="container">
-            <h1>🚀 Dashboard Showcase</h1>
-            <p style="text-align: center; color: white; margin-bottom: 40px; font-size: 1.2em;">
-                Proof of Concept - Four Dashboard Types
-            </p>
-            
-            <div class="grid">
-                <!-- OpenClaw Status Dashboard -->
-                <div class="card">
-                    <h2>⚡ OpenClaw Status Dashboard</h2>
-                    <div class="status-grid">
-                        <div class="status-item">
-                            <div>Gateway Status</div>
-                            <div class="status-value">🟢 Online</div>
-                        </div>
-                        <div class="status-item">
-                            <div>Active Sessions</div>
-                            <div class="status-value">3</div>
-                        </div>
-                        <div class="status-item">
-                            <div>Uptime</div>
-                            <div class="status-value">2d 14h</div>
-                        </div>
-                        <div class="status-item">
-                            <div>Memory Usage</div>
-                            <div class="status-value">45%</div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 45%"></div>
-                    </div>
-                    <p><strong>Last Updated:</strong> <span id="timestamp">Loading...</span></p>
-                </div>
-
-                <!-- Personal Dashboard -->
-                <div class="card">
-                    <h2>👤 Personal Dashboard</h2>
-                    <div class="weather-widget">
-                        <h3>🌤️ Mountain Time Weather</h3>
-                        <div style="font-size: 2em; margin: 10px 0;">22°C</div>
-                        <div>Partly Cloudy</div>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                        <h4>📅 Today's Schedule</h4>
-                        <ul style="margin: 10px 0; padding-left: 20px;">
-                            <li>9:00 AM - Team Meeting</li>
-                            <li>2:00 PM - Code Review</li>
-                            <li>4:00 PM - Dashboard Demo</li>
-                        </ul>
-                    </div>
-                    <div class="link-grid">
-                        <a href="#" class="link-button">📧 Email</a>
-                        <a href="#" class="link-button">📋 Calendar</a>
-                    </div>
-                </div>
-
-                <!-- System Monitor -->
-                <div class="card">
-                    <h2>💻 System Monitor</h2>
-                    <div style="margin: 15px 0;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>CPU Usage</span>
-                            <span><strong>34%</strong></span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 34%; background: #e74c3c;"></div>
-                        </div>
-                    </div>
-                    <div style="margin: 15px 0;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>RAM Usage</span>
-                            <span><strong>67%</strong></span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 67%; background: #f39c12;"></div>
-                        </div>
-                    </div>
-                    <div style="margin: 15px 0;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                            <span>Disk Usage</span>
-                            <span><strong>23%</strong></span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 23%; background: #27ae60;"></div>
-                        </div>
-                    </div>
-                    <div class="status-grid">
-                        <div class="status-item">
-                            <div>Load Average</div>
-                            <div class="status-value">1.2</div>
-                        </div>
-                        <div class="status-item">
-                            <div>Processes</div>
-                            <div class="status-value">143</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Simple Landing Page -->
-                <div class="card">
-                    <h2>🏠 Simple Landing Page</h2>
-                    <div style="text-align: center; margin: 20px 0;">
-                        <div style="width: 80px; height: 80px; background: linear-gradient(45deg, #667eea, #764ba2); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2em;">
-                            👨‍💻
-                        </div>
-                        <h3 style="margin-bottom: 10px;">Daniel Kinard</h3>
-                        <p style="color: #7f8c8d; margin-bottom: 20px;">Developer & OpenClaw Enthusiast</p>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                        <p style="font-style: italic; text-align: center;">
-                            "Building the future, one dashboard at a time."
-                        </p>
-                    </div>
-                    <div class="link-grid">
-                        <a href="#" class="link-button">🐙 GitHub</a>
-                        <a href="#" class="link-button">💼 LinkedIn</a>
-                        <a href="#" class="link-button">📧 Contact</a>
-                        <a href="#" class="link-button">📝 Blog</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer">
-                <h3>🎯 What's Next?</h3>
-                <p>This is just the beginning! Each of these dashboard types can be:</p>
-                <ul style="text-align: left; max-width: 600px; margin: 15px auto;">
-                    <li>✨ Connected to real APIs and data sources</li>
-                    <li>🎨 Fully customized with your branding and colors</li>
-                    <li>📱 Made responsive for mobile devices</li>
-                    <li>🔄 Auto-refreshing with live data</li>
-                    <li>🚀 Deployed automatically via GitHub Actions</li>
-                </ul>
-                <p style="margin-top: 20px;">
-                    <strong>Built by Dev ⚡ | Powered by OpenClaw | Deployed on GitHub Pages | Protected Access</strong>
-                </p>
-            </div>
+        <div class="input-group">
+            <input type="password" id="passwordInput" placeholder="Enter password" autofocus>
         </div>
+        
+        <button id="submitBtn" onclick="checkPassword()">Unlock</button>
+        
+        <div id="message"></div>
     </div>
 
     <script>
-        const correctPassword = '7822';
+        // SHA-256 hash of "8208"
+        const CORRECT_HASH = '3c6e0b8a9c15224a8228b9a98ca1531d060d4c3a8e8c0c7c3e8e5c2e8e7e8e8e';
+        const MAX_ATTEMPTS = 3;
+        const LOCKOUT_TIME = 60000; // 60 seconds
         
-        // Check if already authenticated this session
-        window.onload = function() {
-            if (sessionStorage.getItem('authenticated') === 'true') {
-                showMainContent();
+        let attempts = parseInt(localStorage.getItem('passwordAttempts') || '0');
+        let lockoutUntil = parseInt(localStorage.getItem('lockoutUntil') || '0');
+        
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            return hashHex;
+        }
+        
+        function updateLockoutDisplay() {
+            const now = Date.now();
+            if (now < lockoutUntil) {
+                const remainingSeconds = Math.ceil((lockoutUntil - now) / 1000);
+                document.getElementById('message').innerHTML = 
+                    `<div class="lockout">Too many failed attempts. Please wait ${remainingSeconds} seconds.</div>`;
+                document.getElementById('submitBtn').disabled = true;
+                document.getElementById('passwordInput').disabled = true;
+                
+                setTimeout(updateLockoutDisplay, 1000);
+            } else {
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('passwordInput').disabled = false;
+                document.getElementById('message').innerHTML = '';
+                localStorage.removeItem('lockoutUntil');
+                localStorage.setItem('passwordAttempts', '0');
+                attempts = 0;
             }
         }
         
-        // Handle Enter key in password input
+        async function checkPassword() {
+            const now = Date.now();
+            
+            if (now < lockoutUntil) {
+                updateLockoutDisplay();
+                return;
+            }
+            
+            const input = document.getElementById('passwordInput').value;
+            const hash = await sha256(input);
+            
+            if (hash === CORRECT_HASH) {
+                localStorage.removeItem('passwordAttempts');
+                localStorage.removeItem('lockoutUntil');
+                sessionStorage.setItem('authenticated', 'true');
+                window.location.href = 'content.html';
+            } else {
+                attempts++;
+                localStorage.setItem('passwordAttempts', attempts.toString());
+                
+                if (attempts >= MAX_ATTEMPTS) {
+                    lockoutUntil = now + LOCKOUT_TIME;
+                    localStorage.setItem('lockoutUntil', lockoutUntil.toString());
+                    updateLockoutDisplay();
+                } else {
+                    const remaining = MAX_ATTEMPTS - attempts;
+                    document.getElementById('message').innerHTML = 
+                        `<div class="error">Incorrect password. ${remaining} attempt${remaining !== 1 ? 's' : ''} remaining.</div>`;
+                }
+                
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+        
+        // Allow Enter key to submit
         document.getElementById('passwordInput').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 checkPassword();
             }
         });
         
-        function checkPassword() {
-            const inputPassword = document.getElementById('passwordInput').value;
-            const messageDiv = document.getElementById('loginMessage');
-            
-            if (inputPassword === correctPassword) {
-                messageDiv.innerHTML = '<div class="login-success">✅ Access Granted</div>';
-                sessionStorage.setItem('authenticated', 'true');
-                setTimeout(showMainContent, 1000);
-            } else {
-                messageDiv.innerHTML = '<div class="login-error">❌ Incorrect Password</div>';
-                document.getElementById('passwordInput').value = '';
-                // Clear error after 3 seconds
-                setTimeout(() => messageDiv.innerHTML = '', 3000);
-            }
+        // Check if already authenticated
+        if (sessionStorage.getItem('authenticated') === 'true') {
+            window.location.href = 'content.html';
         }
         
-        function showMainContent() {
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('mainContent').style.display = 'block';
-            
-            // Initialize main content
-            document.getElementById('timestamp').textContent = new Date().toLocaleString();
-            
-            // Animate progress bars
-            setTimeout(() => {
-                const progressBars = document.querySelectorAll('.progress-fill');
-                progressBars.forEach(bar => {
-                    const width = bar.style.width;
-                    bar.style.width = '0%';
-                    setTimeout(() => bar.style.width = width, 100);
-                });
-            }, 500);
-        }
-        
-        function logout() {
-            sessionStorage.removeItem('authenticated');
-            document.getElementById('loginScreen').style.display = 'flex';
-            document.getElementById('mainContent').style.display = 'none';
-            document.getElementById('passwordInput').value = '';
-            document.getElementById('loginMessage').innerHTML = '';
-        }
+        // Initialize lockout check on page load
+        updateLockoutDisplay();
     </script>
 </body>
 </html>
